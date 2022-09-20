@@ -1,1 +1,1 @@
-console.log("as");
+(()=>{"use strict";async function a(a){const t=await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${a}&APPID=776fcd1eecdd73f0d7b531362234442a`),e=await t.json();console.log(e)}a("Hamburg"),{getWeatherInfo:a}("Hamburg")})();

@@ -1,3 +1,17 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url(fonts/Montserrat-Regular.ttf);
+}
+@font-face {
+  font-family: "Montserrat-bold";
+  src: url(fonts/Montserrat-Bold.ttf);
+}
+
+@font-face {
+  font-family: "Montserrat-semibold";
+  src: url(fonts/Montserrat-SemiBold.ttf);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -16,6 +30,26 @@ header {
   padding: 18px;
   display: flex;
   color: white;
+}
+
+h1 {
+  font-family: "Montserrat-bold", sans-serif;
+}
+svg {
+  min-width: 24px;
+  height: 24px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header h1 {
+  border-right: 2px solid #1e1e1e;
+  padding-right: 4px;
+  margin-right: 4px;
 }
 
 input {
@@ -60,4 +94,26 @@ input:focus {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='rgba(223, 213, 213, 0.8)' d='M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z' /%3E%3C/svg%3E");
   background-size: 20px;
   margin-left: 2px;
+}
+
+.weather-card {
+  background-color: #c4e2fe;
+  color: #22609b;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+}
+
+.location-info {
+  font-family: "Montserrat-semibold", sans-serif;
+}
+
+.group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }

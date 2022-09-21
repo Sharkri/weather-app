@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <img
+      src="https://images.unsplash.com/photo-1498263382026-c65d01dad017?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+      alt=""
+      class="bg-img"
+    />
     <header>
       <h1>header stuff</h1>
       <div class="search-bar">
@@ -51,9 +56,14 @@
             <span class="current-time"></span>
           </div>
         </div>
-        <span class="weather"></span>
+        <div class="weather-container">
+          <span class="weather"></span>
+          <img class="weather-img" />
+        </div>
+
         <h1 class="temperature"></h1>
-        <span class="feels-like">Feels like 10C</span>
+        <span class="feels-like"></span>
+
         <div class="other-weather-info">
           <div class="pressure-container">
             <svg viewBox="0 0 24 24">
@@ -64,7 +74,6 @@
             </svg>
             <span class="pressure"></span>
           </div>
-
           <div class="humidity-container">
             <svg viewBox="0 0 24 24">
               <path
@@ -86,6 +95,7 @@
         </div>
       </div>
     </main>
+    <div class="forecasts"></div>
     <script src="main.js"></script>
   </body>
 </html>

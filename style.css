@@ -101,14 +101,37 @@ input:focus {
   color: #22609b;
   padding: 16px;
   border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  width: clamp(315px, 50%, 400px);
+  align-items: center;
 }
 
-.location {
+.other-weather-info {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.location,
+.other-weather-info > div {
   display: flex;
   align-items: center;
 }
 
-.location-info {
+.wind-container,
+.pressure-container,
+.humidity-container {
+  gap: 4px;
+}
+
+.wind-container svg,
+.pressure-container svg {
+  height: 23px;
+}
+
+.weather-card *:not(.current-time, .temperature) {
   font-family: "Montserrat-semibold", sans-serif;
 }
 
@@ -116,4 +139,8 @@ input:focus {
   display: flex;
   align-items: center;
   gap: 16px;
+}
+
+.weather {
+  text-transform: capitalize;
 }

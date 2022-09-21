@@ -24,7 +24,14 @@
             id="search-input"
             autocomplete="off"
           />
-          <span class="location-not-found">No location found.</span>
+          <div class="location-not-found">
+            <span class="error-message">No location found.</span>
+
+            <p class="helper-text">
+              Search must be in the form of "City", "City, State" or "City,
+              Country".
+            </p>
+          </div>
         </div>
       </div>
     </header>
@@ -44,9 +51,9 @@
             <span class="current-time"></span>
           </div>
         </div>
-
-        <h1 class="temperature"></h1>
         <span class="weather"></span>
+        <h1 class="temperature"></h1>
+        <span class="feels-like">Feels like 10C</span>
         <div class="other-weather-info">
           <div class="pressure-container">
             <svg viewBox="0 0 24 24">

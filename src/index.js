@@ -9,6 +9,8 @@ const weather = document.querySelector(".weather");
 const humidity = document.querySelector(".humidity");
 const windSpeed = document.querySelector(".wind-speed");
 const pressure = document.querySelector(".pressure");
+const errorNotFound = document.querySelector(".location-not-found");
+const searchButton = document.querySelector(".search-icon");
 function getTime(timezone) {
   const localTime = new Date().getTime();
   const localOffset = new Date().getTimezoneOffset() * 60000;
@@ -29,16 +31,30 @@ function setWeatherInfo(data) {
   pressure.textContent = `${data.main.pressure} hpa`;
 }
 
-search.addEventListener("keydown", (e) => {
-  if (e.key !== "Enter") return;
-
-  getWeatherInfo(search.value).then((data) => {
+async function searchLocation(query) {
+  try {
+    const data = await getWeatherInfo(query);
+    // Hide error message
+    errorNotFound.classList.remove("active");
     // Clear and unfocus search input
     search.value = "";
     search.blur();
+
     setWeatherInfo(data);
-  });
+  } catch (error) {
+    if (error.code === "404") errorNotFound.classList.add("active");
+    // else unknown error
+    else console.error(error);
+  }
+}
+
+search.addEventListener("keydown", (e) => {
+  if (e.key !== "Enter") return;
+  if (!search.value) return;
+  searchLocation(search.value);
 });
 
+searchButton.addEventListener("click", () => searchLocation(search.value));
+
 // Initial Load
-getWeatherInfo("London").then(setWeatherInfo);
+searchLocation("London");

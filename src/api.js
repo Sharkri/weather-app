@@ -5,6 +5,12 @@ async function getWeatherInfo(location) {
 
   const data = await response.json();
   console.log(data);
+  if (data.cod !== 200) {
+    const error = new Error();
+    error.code = data.cod;
+    throw error;
+  }
+
   return data;
 }
 

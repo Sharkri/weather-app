@@ -12,6 +12,11 @@
   src: url(fonts/Montserrat-SemiBold.ttf);
 }
 
+@font-face {
+  font-family: "Montserrat-semibold-italic";
+  src: url(fonts/Montserrat-SemiBoldItalic.ttf);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -24,6 +29,9 @@ body {
   grid-template-rows: auto 1fr;
   height: 100vh;
   background-color: black;
+  --main-text-color: #22609b;
+  --darker-text-color: rgb(47, 83, 116);
+  --main-bg: #c4e2fe;
 }
 
 header {
@@ -34,13 +42,19 @@ header {
 
 .location-not-found {
   visibility: hidden;
-  color: red;
-  font-family: "Montserrat-semibold", sans-serif;
   font-size: small;
+}
+
+.location-not-found * {
+  font-family: "Montserrat-semibold", sans-serif;
 }
 
 .location-not-found.active {
   visibility: visible;
+}
+
+.error-message {
+  color: red;
 }
 
 h1 {
@@ -58,7 +72,6 @@ main {
 }
 
 header h1 {
-  border-right: 2px solid #1e1e1e;
   padding-right: 4px;
   margin-right: 4px;
 }
@@ -103,8 +116,8 @@ input:focus {
 }
 
 .weather-card {
-  background-color: #c4e2fe;
-  color: #22609b;
+  background-color: var(--main-bg);
+  color: var(--main-text-color);
   padding: 16px;
   border-radius: 12px;
   display: flex;
@@ -117,7 +130,7 @@ input:focus {
   display: flex;
   justify-content: space-around;
   width: 100%;
-  margin-top: 16px;
+  margin-top: 18px;
 }
 
 .location,
@@ -136,7 +149,7 @@ div.humidity-container {
   gap: 6px;
 }
 
-.weather-card *:not(.current-time, .temperature) {
+.weather-card *:not(.current-time, .temperature, .feels-like) {
   font-family: "Montserrat-semibold", sans-serif;
 }
 
@@ -151,8 +164,10 @@ div.humidity-container {
 
 .weather {
   text-transform: capitalize;
+  margin-bottom: 12px;
 }
 
-.temperature {
-  margin-bottom: 8px;
+span.feels-like {
+  font-size: 13px;
+  font-family: "Montserrat-semibold-italic";
 }

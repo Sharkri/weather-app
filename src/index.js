@@ -2,6 +2,8 @@ import { format } from "date-fns";
 import getWeatherInfo from "./api";
 
 const search = document.querySelector("#search-input");
+const searchButton = document.querySelector(".search-icon");
+
 const temperature = document.querySelector(".temperature");
 const location = document.querySelector(".location-info");
 const time = document.querySelector(".current-time");
@@ -9,8 +11,8 @@ const weather = document.querySelector(".weather");
 const humidity = document.querySelector(".humidity");
 const windSpeed = document.querySelector(".wind-speed");
 const pressure = document.querySelector(".pressure");
+const tempFeelsLike = document.querySelector(".feels-like");
 const errorNotFound = document.querySelector(".location-not-found");
-const searchButton = document.querySelector(".search-icon");
 function getTime(timezone) {
   const localTime = new Date().getTime();
   const localOffset = new Date().getTimezoneOffset() * 60000;
@@ -22,6 +24,7 @@ function getTime(timezone) {
 
 function setWeatherInfo(data) {
   temperature.textContent = `${data.main.temp.toFixed(0)}°`;
+  tempFeelsLike.textContent = `Feels like ${data.main.feels_like.toFixed(0)}°`;
   time.textContent = getTime(data.timezone);
   location.textContent = data.name;
   weather.textContent = data.weather[0].description;

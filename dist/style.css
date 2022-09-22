@@ -42,7 +42,7 @@ body {
   display: grid;
   grid-template-rows: auto 1fr;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 1);
+  background-color: black;
   --main-text-color: #22609b;
   --darker-text-color: rgb(47, 83, 116);
   --main-bg: #c4e2fe;
@@ -55,7 +55,7 @@ header {
   display: flex;
   align-items: center;
   color: white;
-  background-color: rgba(0, 0, 0, 0.336);
+  background-color: rgba(0, 0, 0, 0.33);
 }
 
 .location-not-found {
@@ -141,6 +141,7 @@ input:focus {
 }
 
 .weather-card {
+  position: relative;
   background-color: var(--main-bg);
   color: var(--main-text-color);
   padding: 16px;
@@ -207,6 +208,46 @@ div.humidity-container {
 span.feels-like {
   font-size: 13px;
   font-family: "Montserrat-semibold-italic";
+}
+
+.loading-container {
+  position: absolute;
+  width: calc(100% - 32px);
+  height: calc(100% - 32px);
+  z-index: 1;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--main-bg);
+  border-radius: inherit;
+}
+
+.loading-container.loading {
+  display: flex;
+}
+
+#loading-bar-spinner.spinner {
+  animation: loading-bar-spinner 1s linear infinite;
+}
+
+#loading-bar-spinner.spinner .spinner-icon {
+  width: 40px;
+  height: 40px;
+  border: solid 4px transparent;
+  border-top-color: #3b82f6;
+  border-left-color: #3b82f6;
+  border-radius: 50%;
+}
+
+@keyframes loading-bar-spinner {
+  0% {
+    transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
 
 .forecast .feels-like {

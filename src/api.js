@@ -3,7 +3,6 @@ async function getWeatherInfo(location, infoType = "weather") {
     `https://api.openweathermap.org/data/2.5/${infoType}?q=${location}&APPID=776fcd1eecdd73f0d7b531362234442a&units=imperial`
   );
   const data = await response.json();
-  console.log(data);
   if (Number(data.cod) !== 200) {
     const error = new Error();
     error.code = data.cod;

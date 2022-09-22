@@ -14,7 +14,7 @@ const tempFeelsLike = document.querySelector(".feels-like");
 const weatherImg = document.querySelector(".weather-img");
 const forecasts = document.querySelector(".forecasts");
 const errorNotFound = document.querySelector(".location-not-found");
-
+const loading = document.querySelector(".loading-container");
 function getTime(timezone) {
   const localTime = new Date().getTime();
   const localOffset = new Date().getTimezoneOffset() * 60000;
@@ -53,7 +53,6 @@ function setForecasts(data) {
     imgElem.src = `http://openweathermap.org/img/wn/${data.list[i].weather[0].icon}.png`;
 
     const forecast = createElement("div", "forecast");
-
     forecast.appendChild(createElement("span", "forecast-day", day));
     forecast.appendChild(createElement("h2", "forecast-temp", `${temp}°`));
     forecast.appendChild(createElement("span", "feels-like", feelsLike));
@@ -66,6 +65,8 @@ function setForecasts(data) {
 }
 
 async function searchLocation(query) {
+  if (!query) return;
+  loading.classList.add("loading");
   // Hide error message
   errorNotFound.classList.remove("active");
   // Clear and unfocus search input
@@ -83,11 +84,11 @@ async function searchLocation(query) {
     // else unknown error
     else console.error(error);
   }
+  loading.classList.remove("loading");
 }
 
 search.addEventListener("keydown", (e) => {
   if (e.key !== "Enter") return;
-  if (!search.value) return;
   searchLocation(search.value);
 });
 

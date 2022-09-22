@@ -149,7 +149,7 @@ input:focus {
   display: flex;
   flex-direction: column;
   grid-column: 1 / 1;
-  width: clamp(305px, 50%, 450px);
+  width: clamp(315px, 85%, 450px);
   align-items: center;
   justify-self: center;
 }
@@ -210,6 +210,11 @@ span.feels-like {
   font-family: "Montserrat-semibold-italic";
 }
 
+.wind-speed,
+.pressure {
+  white-space: nowrap;
+}
+
 .loading-container {
   position: absolute;
   width: calc(100% - 32px);
@@ -262,7 +267,10 @@ span.feels-like {
 .forecasts {
   color: white;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
+  width: 100%;
+  max-width: 1460px;
+  justify-self: center;
   overflow: auto;
 }
 
@@ -272,7 +280,7 @@ span.feels-like {
   align-items: center;
   color: var(--main-bg);
   margin-bottom: 48px;
-  padding: 0 24px;
+  padding: 0 28px;
 }
 
 .forecast *:not(.feels-like, .forecast-temp, .weather-desc) {
@@ -292,7 +300,7 @@ span.feels-like {
   text-align: center;
 }
 
-@media (max-width: 843px) {
+@media (max-width: 600px) {
   .forecasts {
     justify-content: flex-start;
   }

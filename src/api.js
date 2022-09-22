@@ -8,7 +8,6 @@ async function getWeatherInfo(location, infoType = "weather") {
     error.code = data.cod;
     throw error;
   }
-
   return data;
 }
 

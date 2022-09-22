@@ -1,4 +1,4 @@
-import { addDays, format } from "date-fns";
+import { format } from "date-fns";
 import getWeatherInfo from "./api";
 
 const search = document.querySelector("#search-input");
@@ -45,8 +45,8 @@ function createElement(tagName, className, textContent) {
 }
 function setForecasts(data) {
   forecasts.textContent = "";
-  for (let i = 1; i <= 7; i += 1) {
-    const day = format(addDays(getTime(data.city.timezone), i), "EEEE");
+  for (let i = 0; i < data.list.length; i += 8) {
+    const day = format(new Date(data.list[i].dt_txt), "EEEE");
     const temp = data.list[i].main.temp.toFixed(0);
     const feelsLike = `Feels like ${data.list[i].main.feels_like.toFixed(0)}°`;
     const imgElem = createElement("img", "forecast-weather-img");
@@ -93,6 +93,8 @@ search.addEventListener("keydown", (e) => {
 });
 
 searchButton.addEventListener("click", () => searchLocation(search.value));
-
+document.addEventListener("keyup", (e) => {
+  if (e.key === "/") search.focus();
+});
 // Initial Load
 searchLocation("Antarctica");

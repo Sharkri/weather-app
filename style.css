@@ -251,7 +251,8 @@ span.feels-like {
 }
 
 .forecast .feels-like {
-  font-size: 11px;
+  font-size: 10px;
+  white-space: nowrap;
 }
 
 .forecast-day {
@@ -288,6 +289,7 @@ span.feels-like {
   color: #c9c5c5;
   font-family: "Montserrat-bold", sans-serif;
   text-transform: capitalize;
+  text-align: center;
 }
 
 @media (max-width: 843px) {

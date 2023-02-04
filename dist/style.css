@@ -48,6 +48,12 @@ body {
   --main-bg: #c4e2fe;
 }
 
+button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
 header {
   padding: 18px 0;
   position: sticky;
@@ -152,6 +158,34 @@ input:focus {
   width: clamp(315px, 85%, 450px);
   align-items: center;
   justify-self: center;
+}
+
+.refresh svg path {
+  fill: var(--darker-text-color);
+}
+
+.main-temp {
+  display: flex;
+  margin-left: 39px;
+}
+
+.fahrenheit-to-celcius {
+  margin-left: 3px;
+}
+
+.fahrenheit-to-celcius button {
+  font-size: 14px;
+  color: #70757a;
+}
+
+.fahrenheit-to-celcius button.active {
+  color: var(--main-text-color);
+  cursor: auto;
+}
+
+.separator {
+  border-left: solid 1px #70757a;
+  margin: 0 4px;
 }
 
 .weather-img {

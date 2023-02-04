@@ -1,6 +1,10 @@
-async function getWeatherInfo(location, infoType = "weather") {
+async function getWeatherInfo(location, settings = {}) {
   const response = await fetch(
-    `https://api.openweathermap.org/data/2.5/${infoType}?q=${location}&APPID=776fcd1eecdd73f0d7b531362234442a&units=imperial`
+    `https://api.openweathermap.org/data/2.5/${
+      settings.infoType || "weather"
+    }?q=${location}&APPID=776fcd1eecdd73f0d7b531362234442a&units=${
+      settings.unitType || "imperial"
+    }`
   );
   const data = await response.json();
   if (Number(data.cod) !== 200) {

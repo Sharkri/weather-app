@@ -27,7 +27,7 @@ function getTime(timezone) {
   return cityDate;
 }
 
-function setWeatherCard(data) {
+function setWeatherCard(data, unitType) {
   temperature.textContent = `${data.main.temp.toFixed(0)}`;
   tempFeelsLike.textContent = `Feels like ${data.main.feels_like.toFixed(0)}°`;
   time.textContent = format(getTime(data.timezone), "EEEE, h:mm a");
@@ -37,7 +37,9 @@ function setWeatherCard(data) {
   weatherImg.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
   humidity.textContent = `${data.main.humidity}%`;
   humidity.title = `Humidity: ${data.main.humidity}%`;
-  windSpeed.textContent = `${+data.wind.speed.toFixed(1)} mph`;
+  windSpeed.textContent = `${+data.wind.speed.toFixed(1)} ${
+    unitType === "imperial" ? "mph" : "km/h"
+  }`;
   pressure.textContent = `${data.main.pressure} hpa`;
 }
 
@@ -68,10 +70,13 @@ function setForecasts(data) {
   }
 }
 
+const getActiveUnitType = () =>
+  document.querySelector(".active").dataset.unitType;
+
 async function searchLocation(query) {
   if (!query) return;
 
-  const { unitType } = document.querySelector(".active").dataset;
+  const unitType = getActiveUnitType();
 
   loading.classList.add("loading");
   // Hide error message
@@ -84,7 +89,7 @@ async function searchLocation(query) {
       getWeatherInfo(query, { infoType: "weather", unitType }),
       getWeatherInfo(query, { infoType: "forecast", unitType }),
     ]);
-    setWeatherCard(data);
+    setWeatherCard(data, unitType);
     setForecasts(forecast);
   } catch (error) {
     if (error.code === "404") errorNotFound.classList.add("active");
